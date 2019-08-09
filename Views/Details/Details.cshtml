@@ -1,0 +1,245 @@
+﻿@model MVC_Final.Models.UserViewModel
+@using System.Linq
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+    <style>
+        span.field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="hidden" class="patientDetail" value="@ViewBag.patientID" />
+    <br />
+    <div class="tablecontainer">
+        <table id="myInfotable" class="table">
+            <thead>
+                <tr>
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Doğum Tarihi</th>
+                    <th>Yaşı</th>
+                    <th>Özet</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="tablecontainer">
+        <div class="row">
+            <div id="Information_div" class="col-md-6">
+                <h4 style="font-size:14px; font-family:Tahoma; font-weight:bold; color:whitesmoke">Bilgiler</h4>
+                <textarea class="textarea_top" id="txt_information">@if (@Model.Information == null){}else { @Model.Information.Information}</textarea>
+            </div>
+
+            <div id="Disease_div" class="col-md-6">
+                <h4 style="font-size:14px; font-family:Tahoma; font-weight:bold; color:whitesmoke">Hastalık Geçmişi</h4>
+                <textarea class="textarea_top" id="txt_disease">@if (@Model.Disease == null){}else { @Model.Disease.Disease}</textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="Surgery_div" class="col-md-6">
+                <h4 style="font-size:14px; font-family:Tahoma; font-weight:bold; color:whitesmoke">Ameliyat Geçmişi</h4>
+                <textarea class="textarea_top" id="txt_surgery">@if (@Model.Surgery == null){}else { @Model.Surgery.Surgery}</textarea>
+            </div>
+
+            <div id="Medicine_div" class="col-md-6">
+                <h4 style="font-size:14px; font-family:Tahoma; font-weight:bold; color:whitesmoke">Kullandığı İlaçlar</h4>
+                <textarea class="textarea_top" id="txt_medicine">@if (@Model.Medicine == null){}else { @Model.Medicine.Medicine}</textarea>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="tablecontainer">
+        <div class="container"><h1 style="color:whitesmoke">Muayeneler</h1></div>
+        <div id="exTab3" class="container">
+            <ul class="nav nav-pills">
+
+                @foreach (var inspection in Model.Inspections_List)
+                {
+                if (ViewBag.first_primary == true)
+                    {
+                        <li class="active navbar-active" style="margin-left:0px;">
+                            <a href="#tab_muayene_@inspection.ID" data-toggle="tab" id="@inspection.ID">@inspection.Name  (@inspection.RegisterDate.Value.ToString("yyyy-MM-dd"))</a>
+                        </li>
+                        ViewBag.first_primary = false;
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="#tab_muayene_@inspection.ID" data-toggle="tab" id="@inspection.ID">@inspection.Name  (@inspection.RegisterDate.Value.ToString("yyyy-MM-dd"))</a>
+                        </li>
+                    }
+                }
+                <li>
+                    <a class="popup" href="http://localhost:48333/Inspections/create/@ViewBag.patientID">+</a>
+                </li>
+            </ul>
+            <div class="tab-content clearfix">
+                @foreach (var inspection in Model.Inspections_List)
+                {
+                    if (ViewBag.first_secondary == true)
+                    {
+                        <div class="tab-pane active" id="tab_muayene_@inspection.ID">
+                            <div id="tab_muayene_main_@inspection.ID" class="container">
+                                <ul class="nav nav-pills">
+                                    <li class="navbar-right">
+                                        <a class="popup" href="/Inspections/delete/@inspection.ID">Muayeneyi Sil</a>
+                                    </li>
+                                    <li class="active navbar-active" style="margin-left:0px;">
+                                        <a href="#tab_muayene_complains_@inspection.ID" data-toggle="tab">Şikayetler</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_findings_@inspection.ID" data-toggle="tab">Bulgular</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_diagnosis_@inspection.ID" data-toggle="tab">Teşhis</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_treatments_@inspection.ID" data-toggle="tab">Tedavi Planları</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_photos_@inspection.ID" data-toggle="tab">Fotoğraflar</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_examinations_@inspection.ID" data-toggle="tab">Kontroller</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content clearfix">
+                                    <div class="tab-pane active" id="tab_muayene_complains_@inspection.ID">
+                                        <h4 class="h4_bottom">Şikayetler</h4>
+                                        <textarea class="textarea_bottom" id="txt_complain_@inspection.ID">@if (@Model.Complain_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Complain_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Complain}</textarea>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_findings_@inspection.ID">
+                                        <h4 class="h4_bottom">Bulgular</h4>
+                                        <textarea class="textarea_bottom" id="txt_finding_@inspection.ID">@if (@Model.Finding_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Finding_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Finding}</textarea>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_diagnosis_@inspection.ID">
+                                        <h4 class="h4_bottom">Teşhis</h4>
+                                        <textarea class="textarea_bottom" id="txt_diagnosis_@inspection.ID">@if (@Model.Diagnosis_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Diagnosis_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Description}</textarea>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_treatments_@inspection.ID">
+                                        <h4 class="h4_bottom">Tedavi Planı</h4>
+                                        <textarea class="textarea_bottom" id="txt_treatment_@inspection.ID">@if (@Model.Treatment_Plan_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Treatment_Plan_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Treatment_Plan}</textarea>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_photos_@inspection.ID">
+                                        <table id="patientPhototable_@inspection.ID" class="table table-hover table-striped">
+                                            <colgroup>
+                                                <col span="1" style="width:70%">
+                                                <col span="1" style="width:20%">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>Fotoğraf</th>
+                                                    <th>Kayıt Tarihi</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <a id="photoLink" class="popup btn" href="/Photos/create/@inspection.ID">Yeni Fotoğraf Ekle</a>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_examinations_@inspection.ID">
+                                        <h4 class="h4_bottom">Kontoller</h4>
+                                        <textarea class="textarea_bottom" id="txt_examination_@inspection.ID">@if (@Model.Examination_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Examination_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Examination}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        ViewBag.first_secondary = false;
+                    }
+                    else
+                    {
+                        <div class="tab-pane" id="tab_muayene_@inspection.ID">
+                            <div id="tab_muayene_main_@inspection.ID" class="container">
+                                <ul class="nav nav-pills">
+                                    <li class="navbar-right">
+                                        <a class="popup" href="/Inspections/delete/@inspection.ID">Muayeneyi Sil</a>
+                                    </li>
+                                    <li class="active navbar-active">
+                                        <a href="#tab_muayene_complains_@inspection.ID" data-toggle="tab">Şikayetler</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_findings_@inspection.ID" data-toggle="tab">Bulgular</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_diagnosis_@inspection.ID" data-toggle="tab">Teşhis</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_treatments_@inspection.ID" data-toggle="tab">Tedavi Planları</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_photos_@inspection.ID" data-toggle="tab">Fotoğraflar</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_muayene_examinations_@inspection.ID" data-toggle="tab">Kontroller</a>
+                                    </li>
+                                </ul>
+                           
+                                <div class="tab-content clearfix">
+                                    <div class="tab-pane active" id="tab_muayene_complains_@inspection.ID">
+                                        <h4 class="h4_bottom">Şikayetler</h4>
+                                        <textarea class="textarea_bottom" id="txt_complain_@inspection.ID">@if (@Model.Complain_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Complain_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Complain}</textarea>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_findings_@inspection.ID">
+                                        <h4 class="h4_bottom">Bulgular</h4>
+                                        <textarea class="textarea_bottom" id="txt_finding_@inspection.ID">@if (@Model.Finding_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Finding_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Finding}</textarea>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_diagnosis_@inspection.ID">
+                                        <h4 class="h4_bottom">Teşhis</h4>
+                                        <textarea class="textarea_bottom" id="txt_diagnosis_@inspection.ID">@if (@Model.Diagnosis_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Diagnosis_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Description}</textarea>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_treatments_@inspection.ID">
+                                        <h4 class="h4_bottom">Tedavi Planı</h4>
+                                        <textarea class="textarea_bottom" id="txt_treatment_@inspection.ID">@if (@Model.Treatment_Plan_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Treatment_Plan_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Treatment_Plan}</textarea>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_photos_@inspection.ID">
+                                        <table id="patientPhototable_@inspection.ID" class="table table-hover table-striped">
+                                            <colgroup>
+                                                <col span="1" style="width:70%">
+                                                <col span="1" style="width:20%">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>Fotoğraf</th>
+                                                    <th>Kayıt Tarihi</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <a id="photoLink" class="popup btn" href="/Photos/create/@inspection.ID">Yeni Fotoğraf Ekle</a>
+                                    </div>
+                                    <div class="tab-pane" id="tab_muayene_examinations_@inspection.ID">
+                                        <h4 class="h4_bottom">Kontroller</h4>
+                                        <textarea class="textarea_bottom" id="txt_examination_@inspection.ID">@if (@Model.Examination_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault() == null) { } else {@Model.Examination_List.Where(x => x.InspectionID == @inspection.ID).FirstOrDefault().Examination}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/tables/details.js"></script>
+    <script src="~/Scripts/tables/textareas.js"></script>
+
+</body>
+</html>

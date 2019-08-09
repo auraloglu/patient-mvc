@@ -1,0 +1,34 @@
+﻿@model MVC_Final.Models.Patients
+<h3>Hastayı Sil</h3>
+@using (Html.BeginForm("delete", "patients", FormMethod.Post, new { id = "popupForm" }))
+{
+    @Html.HiddenFor(a => a.ID)
+    <div class="form-group">
+        <label>Adı</label>
+        <p>@Model.FirstName</p>
+    </div>
+
+    <div class="form-group">
+        <label>Soyadı</label>
+        <p>@Model.LastName</p>
+    </div>
+
+    <div class="form-group">
+        <label>Doğum Tarihi</label>
+        <p>@Model.BirthDate.Value.ToString("yyyy-MM-dd")</p>
+    </div>
+
+    <div class="form-group">
+        <label>Kayıt Tarihi</label>
+        <p>@Model.RegisterDate.Value.ToString("yyyy-MM-dd HH:mm:ss")</p>
+    </div>
+
+    <div class="form-group">
+        <label>Özet</label>
+        <p>@Model.Summary</p>
+    </div>
+
+    <div>
+        <input type="submit" value="Sil" />
+    </div>
+}

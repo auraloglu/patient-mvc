@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVC_ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PatientsDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Complains" EntityType="MVC_ProjectModel.Complains" />
+    <EntitySet Name="Diagnosis" EntityType="MVC_ProjectModel.Diagnosis" />
+    <EntitySet Name="Diseases" EntityType="MVC_ProjectModel.Diseases" />
+    <EntitySet Name="Examinations" EntityType="MVC_ProjectModel.Examinations" />
+    <EntitySet Name="Findings" EntityType="MVC_ProjectModel.Findings" />
+    <EntitySet Name="Informations" EntityType="MVC_ProjectModel.Informations" />
+    <EntitySet Name="Inspections" EntityType="MVC_ProjectModel.Inspections" />
+    <EntitySet Name="Medicines" EntityType="MVC_ProjectModel.Medicines" />
+    <EntitySet Name="Patients" EntityType="MVC_ProjectModel.Patients" />
+    <EntitySet Name="Photos" EntityType="MVC_ProjectModel.Photos" />
+    <EntitySet Name="Surgeries" EntityType="MVC_ProjectModel.Surgeries" />
+    <EntitySet Name="Treatment_Plans" EntityType="MVC_ProjectModel.Treatment_Plans" />
+    <EntitySet Name="Users" EntityType="MVC_ProjectModel.Users" />
+    <AssociationSet Name="FK_InspectionID_Complains" Association="MVC_ProjectModel.FK_InspectionID_Complains">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Complains" EntitySet="Complains" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Diagnosis" Association="MVC_ProjectModel.FK_InspectionID_Diagnosis">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Diagnosis" EntitySet="Diagnosis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Disease" Association="MVC_ProjectModel.FK_PatientID_Disease">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Diseases" EntitySet="Diseases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Examination" Association="MVC_ProjectModel.FK_InspectionID_Examination">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Examinations" EntitySet="Examinations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Finding" Association="MVC_ProjectModel.FK_InspectionID_Finding">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Findings" EntitySet="Findings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Information" Association="MVC_ProjectModel.FK_PatientID_Information">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Informations" EntitySet="Informations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Photo" Association="MVC_ProjectModel.FK_InspectionID_Photo">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Photos" EntitySet="Photos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Treatment_Plan" Association="MVC_ProjectModel.FK_InspectionID_Treatment_Plan">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Treatment_Plans" EntitySet="Treatment_Plans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Inspection" Association="MVC_ProjectModel.FK_PatientID_Inspection">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Inspections" EntitySet="Inspections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Medicines" Association="MVC_ProjectModel.FK_PatientID_Medicines">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Medicines" EntitySet="Medicines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Surgeries" Association="MVC_ProjectModel.FK_PatientID_Surgeries">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Surgeries" EntitySet="Surgeries" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Complains">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InspectionID" Type="Int32" Nullable="false" />
+    <Property Name="Complain" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Inspections" Relationship="MVC_ProjectModel.FK_InspectionID_Complains" FromRole="Complains" ToRole="Inspections" />
+  </EntityType>
+  <EntityType Name="Diagnosis">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InspectionID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Inspections" Relationship="MVC_ProjectModel.FK_InspectionID_Diagnosis" FromRole="Diagnosis" ToRole="Inspections" />
+  </EntityType>
+  <EntityType Name="Diseases">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="Disease" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Patients" Relationship="MVC_ProjectModel.FK_PatientID_Disease" FromRole="Diseases" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Examinations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InspectionID" Type="Int32" Nullable="false" />
+    <Property Name="Examination" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Inspections" Relationship="MVC_ProjectModel.FK_InspectionID_Examination" FromRole="Examinations" ToRole="Inspections" />
+  </EntityType>
+  <EntityType Name="Findings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InspectionID" Type="Int32" Nullable="false" />
+    <Property Name="Finding" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Inspections" Relationship="MVC_ProjectModel.FK_InspectionID_Finding" FromRole="Findings" ToRole="Inspections" />
+  </EntityType>
+  <EntityType Name="Informations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="Information" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Patients" Relationship="MVC_ProjectModel.FK_PatientID_Information" FromRole="Informations" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Inspections">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Complains" Relationship="MVC_ProjectModel.FK_InspectionID_Complains" FromRole="Inspections" ToRole="Complains" />
+    <NavigationProperty Name="Diagnosis" Relationship="MVC_ProjectModel.FK_InspectionID_Diagnosis" FromRole="Inspections" ToRole="Diagnosis" />
+    <NavigationProperty Name="Examinations" Relationship="MVC_ProjectModel.FK_InspectionID_Examination" FromRole="Inspections" ToRole="Examinations" />
+    <NavigationProperty Name="Findings" Relationship="MVC_ProjectModel.FK_InspectionID_Finding" FromRole="Inspections" ToRole="Findings" />
+    <NavigationProperty Name="Photos" Relationship="MVC_ProjectModel.FK_InspectionID_Photo" FromRole="Inspections" ToRole="Photos" />
+    <NavigationProperty Name="Treatment_Plans" Relationship="MVC_ProjectModel.FK_InspectionID_Treatment_Plan" FromRole="Inspections" ToRole="Treatment_Plans" />
+    <NavigationProperty Name="Patients" Relationship="MVC_ProjectModel.FK_PatientID_Inspection" FromRole="Inspections" ToRole="Patients" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Medicines">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="Medicine" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Patients" Relationship="MVC_ProjectModel.FK_PatientID_Medicines" FromRole="Medicines" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+    <Property Name="Summary" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Diseases" Relationship="MVC_ProjectModel.FK_PatientID_Disease" FromRole="Patients" ToRole="Diseases" />
+    <NavigationProperty Name="Informations" Relationship="MVC_ProjectModel.FK_PatientID_Information" FromRole="Patients" ToRole="Informations" />
+    <NavigationProperty Name="Inspections" Relationship="MVC_ProjectModel.FK_PatientID_Inspection" FromRole="Patients" ToRole="Inspections" />
+    <NavigationProperty Name="Medicines" Relationship="MVC_ProjectModel.FK_PatientID_Medicines" FromRole="Patients" ToRole="Medicines" />
+    <NavigationProperty Name="Surgeries" Relationship="MVC_ProjectModel.FK_PatientID_Surgeries" FromRole="Patients" ToRole="Surgeries" />
+  </EntityType>
+  <EntityType Name="Photos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InspectionID" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Inspections" Relationship="MVC_ProjectModel.FK_InspectionID_Photo" FromRole="Photos" ToRole="Inspections" />
+  </EntityType>
+  <EntityType Name="Surgeries">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="Surgery" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Patients" Relationship="MVC_ProjectModel.FK_PatientID_Surgeries" FromRole="Surgeries" ToRole="Patients" />
+  </EntityType>
+  <EntityType Name="Treatment_Plans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InspectionID" Type="Int32" Nullable="false" />
+    <Property Name="Treatment_Plan" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Inspections" Relationship="MVC_ProjectModel.FK_InspectionID_Treatment_Plan" FromRole="Treatment_Plans" ToRole="Inspections" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_InspectionID_Complains">
+    <End Type="MVC_ProjectModel.Inspections" Role="Inspections" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Complains" Role="Complains" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Complains">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Diagnosis">
+    <End Type="MVC_ProjectModel.Inspections" Role="Inspections" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Diagnosis" Role="Diagnosis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Diagnosis">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Disease">
+    <End Type="MVC_ProjectModel.Patients" Role="Patients" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Diseases" Role="Diseases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Diseases">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Examination">
+    <End Type="MVC_ProjectModel.Inspections" Role="Inspections" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Examinations" Role="Examinations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Examinations">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Finding">
+    <End Type="MVC_ProjectModel.Inspections" Role="Inspections" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Findings" Role="Findings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Findings">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Information">
+    <End Type="MVC_ProjectModel.Patients" Role="Patients" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Informations" Role="Informations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Informations">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Photo">
+    <End Type="MVC_ProjectModel.Inspections" Role="Inspections" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Photos" Role="Photos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Photos">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Treatment_Plan">
+    <End Type="MVC_ProjectModel.Inspections" Role="Inspections" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Treatment_Plans" Role="Treatment_Plans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Treatment_Plans">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Inspection">
+    <End Type="MVC_ProjectModel.Patients" Role="Patients" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Inspections" Role="Inspections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Inspections">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Medicines">
+    <End Type="MVC_ProjectModel.Patients" Role="Patients" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Medicines" Role="Medicines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Medicines">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Surgeries">
+    <End Type="MVC_ProjectModel.Patients" Role="Patients" Multiplicity="1" />
+    <End Type="MVC_ProjectModel.Surgeries" Role="Surgeries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Surgeries">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

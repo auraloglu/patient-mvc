@@ -1,0 +1,20 @@
+﻿@model MVC_Final.Models.Inspections
+<h3>Muayene Sil</h3>
+@using (Html.BeginForm("delete", "Inspections", FormMethod.Post, new { id = "popupForm_Inspection" }))
+{
+    @Html.HiddenFor(a => a.ID)
+
+    <div class="form-group">
+        <label>Muayene Adı</label>
+        <p>@Model.Name</p>
+    </div>
+
+    <div class="form-group">
+        <label>Kayıt Tarihi</label>
+        <p>@Model.RegisterDate.Value.ToString("yyyy-MM-dd HH:mm:ss")</p>
+    </div>
+
+    <div>
+        <input type="submit" value="Sil" />
+    </div>
+}

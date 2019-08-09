@@ -1,0 +1,147 @@
+﻿body {
+    font-family: Tahoma;
+}
+
+    body .table {
+        border-right: 0px !important;
+        border-left: 0px !important;
+        border-top: 0px !important;
+        border-bottom: 10px solid #4169E1 !important;
+        width: 100% !important;
+        float: left !important;
+        color: black !important;
+        font-size: 14px;
+    }
+
+        body .table thead {
+            background-color: #4169E1 !important;
+            color: whitesmoke !important;
+            border-bottom: 0px !important;
+        }
+
+    body .table th {
+        border:0px !important;
+        padding-left: 8px !important;
+        padding-top:5px !important;
+        padding-bottom:5px !important;
+    }
+
+    body .btn {
+        margin-bottom: 20px;
+        margin-top: 5px;
+        background-color: #FF8C00;
+        border: none;
+        color: whitesmoke;
+        padding: 3px 6px;
+    }
+
+    body .btn:hover {
+        background-color: #F5E9E2; 
+        color: black;
+    }
+
+    body .btn:focus {
+        background-color: #F5E9E2;
+        color: black;
+    }
+
+#exTab3 .nav-pills > li > a {
+    border-radius: 4px 4px 0 0;
+    background-color: #ff751a;
+    color: whitesmoke;
+}
+
+#exTab3 .nav-pills li a:hover {
+    background-color: #F5E9E2;
+    color: black;
+}
+
+#exTab3 .nav-pills li a:focus {
+    /*background-color: #ee6352;*/
+    color: #fff;
+}
+
+#exTab3 .nav-pills li.active a {
+    background-color: blue;
+    color: #fff;
+}
+
+#exTab3 .tab-content {
+    color: #342e37;
+    background-color: #4169E1;
+    padding: 10px 15px 0px;
+    border: 2px solid blue;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+    background-color: #F5E9E2;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: white;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #85bdbf;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color:whitesmoke;
+    font-weight:bold;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    background-color: #f7a19a;
+}
+
+.ui-dialog .container input {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    background-color: #f7a19a;
+    border: none;
+    color: whitesmoke;
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+
+    .ui-dialog .container input:hover {
+        background-color: #F5E9E2;
+        color: black;
+    }
+
+    .ui-dialog .container input:focus {
+        background-color: #F5E9E2;
+        color: black;
+    }
+
+.tablecontainer {
+    border: 10px solid #4169E1 !important;
+    background-color: #4169E1;
+}
+
+.textarea_bottom {
+    max-width: none;
+    width: 990px;
+    height: 100px;
+    resize: none;
+    margin-bottom: 20px;
+}
+
+.textarea_top {
+    max-width:540px; 
+    width:540px; 
+    height:100px; 
+    resize:none;
+}
+
+.h4_bottom {
+    font-size:14px; 
+    font-family:Tahoma; 
+    font-weight:bold; 
+    color:whitesmoke;
+}

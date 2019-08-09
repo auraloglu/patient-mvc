@@ -1,0 +1,20 @@
+﻿@model MVC_Final.Models.Photos
+<h3>Fotoğraf Sil</h3>
+@using (Html.BeginForm("delete", "Photos", FormMethod.Post, new { id = "popupForm_Photo" }))
+{
+    @Html.HiddenFor(a => a.ID)
+
+    <div class="form-group">
+        <label>Fotoğraf</label>
+        <p><img src="~/images/@Model.Photo" style="max-width:450px; height:230px" /></p>
+    </div>
+
+    <div class="form-group">
+        <label>Kayıt Tarihi</label>
+        <p>@Model.RegisterDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
+    </div>
+
+    <div>
+        <input type="submit" value="Sil" />
+    </div>
+}

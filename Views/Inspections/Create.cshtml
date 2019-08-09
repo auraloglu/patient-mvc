@@ -1,0 +1,18 @@
+﻿@model MVC_Final.Models.Inspections
+<h3>Muayene Ekle</h3>
+@using (Html.BeginForm("create", "Inspections", FormMethod.Post, new { id = "popupForm_Inspection" }))
+{
+    @Html.HiddenFor(x => x.PatientID)
+
+    <div class="form-group">
+        <label>Bilgi</label>
+        @Html.TextBoxFor(a => a.Name, new { @class = "form-control input-sm" })
+        @Html.ValidationMessageFor(a => a.Name)
+    </div>
+
+    @Html.HiddenFor(x => x.ID, new { @Value = 0 })
+
+    <div>
+        <input type="submit" value="Ekle" />
+    </div>
+}

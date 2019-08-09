@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="tablecontainer_index">
+        <a class="btn btn-primary" href="/home" style="margin-bottom:20px; margin-top:20px;">Geri Dön</a>
+        <table id="mytDeletedtable" class="table table-striped table-hover">
+            <colgroup>
+                <col span="1" style="width:15%">
+                <col span="1" style="width:15%">
+                <col span="1" style="width:15%">
+                <col span="1" style="width:5%">
+                <col span="1" style="width:20%">
+                <col span="1" style="width:23%">
+                <col span="1" style="width:10%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Doğum Tarihi</th>
+                    <th>Yaşı</th>
+                    <th>Kayıt Tarihi</th>
+                    <th>Özet</th>
+                    <th>Geri Al</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/tables/deleted_records.js"></script>
+</body>
+</html>

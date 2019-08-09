@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVC_ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Complains">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InspectionID" Type="int" Nullable="false" />
+    <Property Name="Complain" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Diagnosis">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InspectionID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="Diseases">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="Disease" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Examinations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InspectionID" Type="int" Nullable="false" />
+    <Property Name="Examination" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Findings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InspectionID" Type="int" Nullable="false" />
+    <Property Name="Finding" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Informations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="Information" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Inspections">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Medicines">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="Medicine" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="255" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="RegisterDate" Type="datetime" />
+    <Property Name="Summary" Type="varchar" MaxLength="1000" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="Photos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InspectionID" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Surgeries">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="int" Nullable="false" />
+    <Property Name="Surgery" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Treatment_Plans">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InspectionID" Type="int" Nullable="false" />
+    <Property Name="Treatment_Plan" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="255" />
+    <Property Name="Password" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK_InspectionID_Complains">
+    <End Role="Inspections" Type="Self.Inspections" Multiplicity="1" />
+    <End Role="Complains" Type="Self.Complains" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Complains">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Diagnosis">
+    <End Role="Inspections" Type="Self.Inspections" Multiplicity="1" />
+    <End Role="Diagnosis" Type="Self.Diagnosis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Diagnosis">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Examination">
+    <End Role="Inspections" Type="Self.Inspections" Multiplicity="1" />
+    <End Role="Examinations" Type="Self.Examinations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Examinations">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Finding">
+    <End Role="Inspections" Type="Self.Inspections" Multiplicity="1" />
+    <End Role="Findings" Type="Self.Findings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Findings">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Photo">
+    <End Role="Inspections" Type="Self.Inspections" Multiplicity="1" />
+    <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Photos">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InspectionID_Treatment_Plan">
+    <End Role="Inspections" Type="Self.Inspections" Multiplicity="1" />
+    <End Role="Treatment_Plans" Type="Self.Treatment_Plans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inspections">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Treatment_Plans">
+        <PropertyRef Name="InspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Disease">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Diseases" Type="Self.Diseases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Diseases">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Information">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Informations" Type="Self.Informations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Informations">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Inspection">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Inspections" Type="Self.Inspections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Inspections">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Medicines">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Medicines" Type="Self.Medicines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Medicines">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientID_Surgeries">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Surgeries" Type="Self.Surgeries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Surgeries">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MVC_ProjectModelStoreContainer">
+    <EntitySet Name="Complains" EntityType="Self.Complains" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Diagnosis" EntityType="Self.Diagnosis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Diseases" EntityType="Self.Diseases" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Examinations" EntityType="Self.Examinations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Findings" EntityType="Self.Findings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Informations" EntityType="Self.Informations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inspections" EntityType="Self.Inspections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Surgeries" EntityType="Self.Surgeries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Treatment_Plans" EntityType="Self.Treatment_Plans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_InspectionID_Complains" Association="Self.FK_InspectionID_Complains">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Complains" EntitySet="Complains" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Diagnosis" Association="Self.FK_InspectionID_Diagnosis">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Diagnosis" EntitySet="Diagnosis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Examination" Association="Self.FK_InspectionID_Examination">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Examinations" EntitySet="Examinations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Finding" Association="Self.FK_InspectionID_Finding">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Findings" EntitySet="Findings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Photo" Association="Self.FK_InspectionID_Photo">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Photos" EntitySet="Photos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InspectionID_Treatment_Plan" Association="Self.FK_InspectionID_Treatment_Plan">
+      <End Role="Inspections" EntitySet="Inspections" />
+      <End Role="Treatment_Plans" EntitySet="Treatment_Plans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Disease" Association="Self.FK_PatientID_Disease">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Diseases" EntitySet="Diseases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Information" Association="Self.FK_PatientID_Information">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Informations" EntitySet="Informations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Inspection" Association="Self.FK_PatientID_Inspection">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Inspections" EntitySet="Inspections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Medicines" Association="Self.FK_PatientID_Medicines">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Medicines" EntitySet="Medicines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientID_Surgeries" Association="Self.FK_PatientID_Surgeries">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Surgeries" EntitySet="Surgeries" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

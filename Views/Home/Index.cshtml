@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/custom/indexcustom.css" rel="stylesheet" />
+    <style>
+        span.field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <br />
+    <div class="tablecontainer_index">
+        <a class="popup btn btn-primary" href="/patients/create/0">Yeni Hasta Ekle</a>
+        <a class="btn btn-primary" href="/patients/deletedrecords">Silinen Hastaları Gör</a>
+            <table id="patientTable" class="table table-hover table-striped">
+                <colgroup>
+                    <col span="1" style="width:15%">
+                    <col span="1" style="width:15%">
+                    <col span="1" style="width:15%">
+                    <col span="1" style="width:5%">
+                    <col span="1" style="width:20%">
+                    <col span="1" style="width:20%">
+                    <col span="1" style="width:5%">
+                    <col span="1" style="width:3%">
+                    <col span="1" style="width:5%">
+                </colgroup>
+                <thead >
+                    <tr>
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Doğum Tarihi</th>
+                        <th>Yaşı</th>
+                        <th>Kayıt Tarihi</th>
+                        <th>Özet</th>
+                        <th>Düzenle</th>
+                        <th>Sil</th>
+                        <th>Detaylar</th>
+                    </tr>
+                </thead>
+            </table>
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/tables/index.js"></script>
+
+</body>
+</html>

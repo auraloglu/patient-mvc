@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4d4a750de31f4d46acaad0fd74efa16a" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="MVC_ProjectModel.Complains" Width="1.5" PointX="5.25" PointY="19.75" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Diagnosis" Width="1.5" PointX="5.25" PointY="14" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Diseases" Width="1.5" PointX="3" PointY="2.25" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Examinations" Width="1.5" PointX="5.25" PointY="16.875" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Findings" Width="1.5" PointX="5.25" PointY="28.5" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Informations" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Inspections" Width="1.5" PointX="3" PointY="20.75" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Medicines" Width="1.5" PointX="3" PointY="11" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Patients" Width="1.5" PointX="0.75" PointY="14.875" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Photos" Width="1.5" PointX="5.25" PointY="25.625" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Surgeries" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Treatment_Plans" Width="1.5" PointX="5.25" PointY="22.75" />
+        <EntityTypeShape EntityType="MVC_ProjectModel.Users" Width="1.5" PointX="5.75" PointY="0.75" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_InspectionID_Complains" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_InspectionID_Diagnosis" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_PatientID_Disease" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_InspectionID_Examination" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_InspectionID_Finding" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_PatientID_Information" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_InspectionID_Photo" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_InspectionID_Treatment_Plan" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_PatientID_Inspection" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_PatientID_Medicines" />
+        <AssociationConnector Association="MVC_ProjectModel.FK_PatientID_Surgeries" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

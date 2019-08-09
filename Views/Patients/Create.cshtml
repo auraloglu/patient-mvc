@@ -1,0 +1,35 @@
+﻿@model MVC_Final.Models.Patients
+<h3>Yeni Hasta Ekle</h3>
+@using (Html.BeginForm("create", "patients", FormMethod.Post, new { id = "popupForm" }))
+{
+    @*if (Model != null && Model.ID > 0)
+    {
+        @Html.HiddenFor(a => a.ID)
+        @Html.HiddenFor(a => a.RegisterDate)
+    }*@
+
+    <div class="form-group">
+        <label>Adı</label>
+        @Html.TextBoxFor(a => a.FirstName, new { @class = "form-control input-sm" })
+        @Html.ValidationMessageFor(a => a.FirstName)
+    </div>
+    <div class="form-group">
+        <label>Soyadı</label>
+        @Html.TextBoxFor(a => a.LastName, new { @class = "form-control input-sm" })
+        @Html.ValidationMessageFor(a => a.LastName)
+    </div>
+    <div class="form-group">
+        <label>Doğum Tarihi</label>
+        @Html.TextBoxFor(a => a.BirthDate, "{0:yyyy-MM-dd}", new { @class = "form-control input-sm" })
+        @Html.ValidationMessageFor(a => a.BirthDate)
+    </div>
+    <div class="form-group">
+        <label>Özet</label>
+        @Html.TextBoxFor(a => a.Summary, new { @class = "form-control input-sm" })
+        @Html.ValidationMessageFor(a => a.Summary)
+    </div>
+
+    <div>
+        <input type="submit" value="Ekle" />
+    </div>
+}

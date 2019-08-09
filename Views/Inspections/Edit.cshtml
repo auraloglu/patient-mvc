@@ -1,0 +1,20 @@
+﻿@model MVC_Final.Models.Inspections
+<h3>Muayene Bilgisi Düzenle</h3>
+@using (Html.BeginForm("edit", "Inspections", FormMethod.Post, new { id = "popupForm_Inspection" }))
+{
+    if (Model != null && Model.ID > 0)
+    {
+        @Html.HiddenFor(a => a.ID)
+        @Html.HiddenFor(a => a.RegisterDate)
+        @Html.HiddenFor(a => a.PatientID)
+    }
+
+    <div class="form-group">
+        <label>Bilgi</label>
+        @Html.TextBoxFor(a => a.Name, new { @class = "form-control input-sm" })
+        @Html.ValidationMessageFor(a => a.Name)
+    </div>
+    <div>
+        <input type="submit" value="Kaydet" />
+    </div>
+}
